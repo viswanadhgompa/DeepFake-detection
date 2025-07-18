@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scan Results</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background-color: #b22222;
+      color: white;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      height: 40px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    .result-status {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .status-indicator {
+      padding: 12px 20px;
+      font-weight: 600;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    .real {
+      background-color: #e6f5ea;
+      color: #137333;
+    }
+    .fake {
+      background-color: #fdecea;
+      color: #b00020;
+    }
+    .result-details {
+      margin-top: 25px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .btn-group {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+    }
+    .btn {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .btn-primary {
+      background-color: #b22222;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #911d1d;
+    }
+    .btn-secondary {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .btn-secondary:hover {
+      background-color: #e0e0e0;
+    }
+    .certificate-section {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #ccc;
+    }
+    .certificate-section h2 {
+      margin-bottom: 10px;
+    }
+    .certificate-section label,
+    .certificate-section input,
+    .certificate-section button {
+      font-size: 14px;
+    }
+    .certificate-section input {
+      padding: 8px;
+      width: 200px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .certificate-section button {
+      background-color: #b22222;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .certificate-section button:hover {
+      background-color: #911d1d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/multimeta-logo.png" alt="Logo" />
+      <h2>Kill Fake Scanner</h2>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="result-status">
+      Scan Result:
+      <span id="statusIndicator" class="status-indicator fake">
+        Loading...
+      </span>
+    </div>
+
+    <div class="result-details" id="resultDetails">
+      <p><strong>File Name:</strong> Loading...</p>
+      <p><strong>Type:</strong> Loading...</p>
+      <p><strong>Scan Time:</strong> Loading...</p>
+      <p><strong>Confidence:</strong> Loading...</p>
+    </div>
+
+    <!-- Certificate Download Section -->
+    <section class="certificate-section">
+      <h2>DOWNLOAD KILLFAKE VERIFICATION CERTIFICATE</h2>
+      <p>
+        Certify your social media post verified by KillFake as <strong>REAL</strong>.
+        Gain the trust of your followers & customers.
+      </p>
+
+      <label for="fileId">Enter File ID*</label><br />
+      <input type="text" id="fileId" placeholder="e.g., KF1234567890" required />
+      <br />
+      <button onclick="generateCertificate()">Download Certificate</button>
+    </section>
+
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="window.location.href='index.html'">
+        Scan Another File
+      </button>
+      <button class="btn btn-secondary" onclick="window.print()">Download Report</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    function generateCertificate() {
+      const { jsPDF } = window.jspdf;
+      const fileIdInput = document.getElementById('fileId');
+      let fileId = fileIdInput.value.trim();
+    
+      if (!fileId) {
+        fileId = "KF-" + Math.floor(100000000 + Math.random() * 900000000); // Generate unique ID
+        fileIdInput.value = fileId;
+      }
+    
+      const doc = new jsPDF();
+      const img = new Image();
+      img.src = "assets/multimeta-logo.png"; // Adjust the path if needed
+    
+      img.onload = function () {
+        doc.addImage(img, 'PNG', 150, 10, 40, 20); // Add logo
+        doc.setFontSize(20);
+        doc.text('KillFake Verification Certificate', 20, 30);
+    
+        doc.setFontSize(12);
+        doc.text(`This certifies that the file with ID: ${fileId}`, 20, 50);
+        doc.text('has been scanned and verified as REAL by KillFake AI Scanner.', 20, 60);
+        doc.text('Issued by: KillFake Scanner', 20, 80);
+        doc.text('Date: ' + new Date().toLocaleDateString(), 20, 90);
+    
+        doc.save(`KillFake_Certificate_${fileId}.pdf`);
+      };
+    }
+    
+
+
+
+    // Load deepfake result from localStorage and update the page
+    window.onload = function () {
+      const resultJSON = localStorage.getItem('deepfakeResult');
+      if (!resultJSON) {
+        document.getElementById('statusIndicator').textContent = 'No scan result found.';
+        document.getElementById('statusIndicator').className = 'status-indicator fake';
+        document.getElementById('resultDetails').innerHTML =
+          '<p>No scan data available. Please scan a file first.</p>';
+        return;
+      }
+
+      const result = JSON.parse(resultJSON);
+
+      const statusIndicator = document.getElementById('statusIndicator');
+      const resultDetails = document.getElementById('resultDetails');
+
+      if (result.result && result.result.toLowerCase() === 'real') {
+        statusIndicator.textContent = 'Real Content';
+        statusIndicator.className = 'status-indicator real';
+      } else {
+        statusIndicator.textContent = 'Fake Content Detected';
+        statusIndicator.className = 'status-indicator fake';
+      }
+
+      resultDetails.innerHTML = `
+        <p><strong>File Name:</strong> ${result.fileName || 'N/A'}</p>
+        <p><strong>Type:</strong> ${result.type || 'N/A'}</p>
+        <p><strong>Scan Time:</strong> ${result.scanTime ? result.scanTime + ' seconds' : 'N/A'}</p>
+        <p><strong>Confidence:</strong> ${
+          result.confidence ? result.confidence.toFixed(1) + '%' : 'N/A'
+        }</p>
+      `;
+    };
+  </script>
+</body>
+</html>

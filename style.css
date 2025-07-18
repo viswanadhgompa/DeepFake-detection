@@ -1,0 +1,356 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+}
+
+/* NAVBAR */
+.white-navbar {
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-img {
+  height: 40px;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+.logo-text span {
+  color: #b22222;
+}
+.logo-text small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links li a:hover {
+  color: #b22222;
+}
+
+.auth-buttons button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.login-btn {
+  color: #1f2937;
+  border: 1px solid #b22222;
+  background: transparent;
+}
+.signup-btn {
+  background: #b22222;
+  color: white;
+  border: none;
+}
+.signup-btn:hover,
+.login-btn:hover {
+  background: #b22222;
+  color: white;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1f2937;
+}
+.hero-subtext {
+  font-size: 18px;
+  color: #4b5563;
+  margin-top: 10px;
+}
+
+/* UPLOAD SECTION */
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+.type-select {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.type-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+.type-btn.active,
+.type-btn:hover {
+  background-color: #b22222;
+  color: white;
+}
+.drag-drop-area {
+  border: 2px dashed #b22222;
+  border-radius: 12px;
+  padding: 30px;
+  color: #b22222;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  width: 320px;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+.drag-drop-area:hover {
+  background-color: #fceaea;
+  border-color: #8b1616;
+}
+.file-list {
+  color: #374151;
+  font-size: 14px;
+  text-align: left;
+}
+.upload-btn {
+  margin-top: 10px;
+  background: #b22222;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.upload-btn:hover {
+  background: #8b1616;
+}
+
+/* ABOUT SECTION */
+.about {
+  padding: 60px 20px;
+  background-color: #fff;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+}
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.about h2 {
+  font-size: 28px;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+.about p {
+  font-size: 16px;
+  color: #4b5563;
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.more-btn {
+  background: none;
+  border: none;
+  color: #b22222;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.more-btn:hover {
+  text-decoration: underline;
+}
+/* Overlay styling */
+.loading-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 15, 0.8);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Spinner container */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Spinner ring */
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #ccc;
+  border-top: 6px solid #d40000; /* Professional red */
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Text styling */
+.loading-text {
+  color: #ffffff;
+  margin-top: 16px;
+  font-size: 18px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 0.5px;
+}
+.loading-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.loading-logo {
+  width: 120px;
+  margin-bottom: 30px;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #e5e5e5;
+  border-top: 6px solid #b22222; /* Red part */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.certificate-section {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.certificate-section input {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  width: 250px;
+}
+
+.certificate-section button {
+  padding: 0.5rem 1rem;
+  background-color: #2d89ef;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  position: relative;
+  text-align: center;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin: 8px 0;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #b22222;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.modal-content button:hover {
+  background: #911d1d;
+}
+
+.modal .close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  cursor: pointer;
+}

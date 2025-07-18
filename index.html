@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KillFake Scanner</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar white-navbar">
+    <div class="logo-area">
+      
+      <div class="logo-text">
+        <strong>DeepFake<span>Detector</span></strong>
+        
+      </div>
+    </div>
+    <nav class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Upload</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+      <div class="auth-buttons">
+  <button class="login-btn" onclick="toggleModal('loginModal', true)">Login</button>
+  <button class="signup-btn" onclick="toggleModal('signupModal', true)">Sign Up</button>
+</div>
+ 
+      
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main>
+    <!-- Loading Popup -->
+<!-- Loading Popup -->
+<!-- Loading Popup -->
+<!-- Loading Popup -->
+<!-- Loading Popup -->
+ <!-- Loading Popup -->
+<div id="loadingPopup" class="loading-popup">
+
+  <div class="spinner"></div>
+  <p class="loading-text">Scanning... Please wait</p>
+</div>
+
+</div>
+
+
+
+
+
+    <section class="hero">
+      <h1>Detect DeepFake Videos, Audio, Images, Advertisements, Investment Advice & News  and safeguard yourself.</h1>
+      <p class="hero-subtext">The line between truth and fabrication is vanishing. Use DeepFake Detector to stay alert!</p>
+
+      <div class="upload-container">
+        <div class="type-select">
+          <button class="type-btn active" data-type="video">🎥 Video</button>
+          <button class="type-btn" data-type="image">🖼️ Image</button>
+          <button class="type-btn" data-type="audio">🎧 Audio</button>
+          <button class="type-btn" data-type="text">📰 News Text</button>
+        </div>
+
+        <div class="drag-drop-area" id="dragDropArea">
+          <p>Drag & Drop or Click to Upload</p>
+          <input type="file" id="fileInput" multiple style="display: none;" />
+        </div>
+
+        <div id="fileList" class="file-list"></div>
+
+        <button class="btn upload-btn" onclick="fileInput.click()">Upload Now</button>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+    
+      <div class="about-container">
+  <h2>About DeepFake Detector</h2>
+  <p id="aboutText">
+    DeepFake Detector is a cutting-edge platform developed by Viswanadh naidu Gompa that empowers individuals and organizations to detect manipulated or falsified media content.
+    From deepfake videos and altered audio to misleading news text and fake images, our AI-driven technology scans and verifies authenticity with speed and precision.
+    <span id="dots">...</span>
+    <span id="more" style="display: none;">
+      Our mission is to build trust in digital content by equipping users with tools to uncover the truth and combat misinformation. Whether you're a journalist, researcher,
+      or concerned citizen — KillFake Scanner helps you stay informed and protected.
+    </span>
+  </p>
+  <button id="moreBtn" class="more-btn">More</button>
+</div> 
+    </section>
+    <!-- Login Modal -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleModal('loginModal', false)">&times;</span>
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" required /><br />
+    <input type="password" id="loginPassword" placeholder="Password" required /><br />
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+
+<!-- Signup Modal -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="toggleModal('signupModal', false)">&times;</span>
+    <h2>Signup</h2>
+    <input type="text" id="signupUsername" placeholder="Username" required /><br />
+    <input type="email" id="signupEmail" placeholder="Email" required /><br />
+    <input type="password" id="signupPassword" placeholder="Password" required /><br />
+    <button onclick="signup()">Signup</button>
+  </div>
+</div>
+
+  </main>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
